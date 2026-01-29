@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from groq import Groq
 from config import Config
 
@@ -112,6 +112,10 @@ def dc_circuit(text):
         return f"I total = {v/rt:.2f} A (R total = {rt:.2f} Ω)"
 
     return None
+
+@app.route('/google3f36c0c2a27a01e9.html')
+def google_verify():
+    return send_from_directory('.', 'google3f36c0c2a27a01e9.html')
 
 
 @app.route("/")
