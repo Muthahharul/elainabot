@@ -1,0 +1,422 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: none;
+}
+
+.mobile { display: none; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  padding: 20px 40px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.typing-header {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.color-span {
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffffff;
+  filter: drop-shadow(0 0 2px #b694ff);
+}
+
+.views {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaffc3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.views::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #2ecc71;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.8);
+  animation: pulse 1.6s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 40px 160px 40px;
+  gap: 20px;
+  position: relative;
+}
+
+.msg-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 60%;
+}
+
+.msg-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bubble-left {
+    background: linear-gradient(135deg, #7c5cff, #b694ff);
+    color: white;
+    padding: 14px 18px;
+    max-width: 70%;
+    border-radius: 4px 18px 18px 18px;
+    box-shadow: 0 6px 12px rgba(124, 92, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.typing {
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid rgba(255,255,255,0.8);
+    animation: typing 1.8s steps(40) forwards, blink .7s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.msg-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bubble-right {
+  background: rgba(0, 0, 0, 0.459);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 22px;
+  border-radius: 14px 0 14px 14px;
+  max-width: 60%;
+  font-size: 16px;
+}
+
+.input-box {
+  position: relative; 
+  width: 80%;
+  margin: auto;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.character-input {
+  position: absolute;
+  left: -100px;
+  bottom: 40px;
+  width: 180px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.send-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.send-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.info {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  margin-top: -10px;
+}
+
+.audio-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 14px;
+  border-radius: 14px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
+}
+
+.audio-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 992px) {
+  .header-box {
+    padding: 0 20px;
+  }
+
+  .header {
+    font-size: 26px;
+    padding: 10px 20px;
+    transform: translateY(-10px);
+  }
+
+  .chat-container {
+    padding: 20px 20px 150px 20px;
+  }
+
+  .msg-left,
+  .msg-right .bubble-right {
+    max-width: 75%;
+  }
+
+  .character-input {
+    left: -60px;
+    width: 150px;
+  }
+
+  .input-box {
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .views {
+  transform: translateY(-0.7rem);
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .header {
+    font-size: 22px;
+  }
+
+  .views {
+    font-size: 16px;
+  }
+
+  .msg-left {
+    max-width: 80%;
+    gap: 8px;
+  }
+
+  .msg-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bubble-left,
+  .bubble-right {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+
+  .input-box {
+    width: 90%;
+  }
+
+  .character-input {
+    left: -3.5rem;
+    bottom: 40px;
+    width: 130px;
+  }
+
+  .audio-btn {
+    bottom: 70px;
+    right: 15px;
+    padding: 8px 12px;
+    font-size: 18px;
+    transform: translateY(-3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-box {
+    padding: 0 10px;
+  }
+
+  .header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .typing-header {
+    font-size: 16px;
+  }
+
+  .chat-container {
+    padding: 10px 15px 140px 15px;
+  }
+
+  .msg-left {
+    max-width: 90%;
+  }
+
+  .msg-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .bubble-left {
+    max-width: 85%;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .bubble-right {
+    max-width: 80%;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .input-box {
+    width: 95%;
+    padding: 8px 12px;
+  }
+
+  .chat-input {
+    font-size: 14px;
+  }
+
+  .send-btn {
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+
+  .character-input {
+    left: -45px;
+    bottom: 35px;
+    width: 110px;
+  }
+
+  .audio-btn {
+    bottom: 75px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 16px;
+    transform: translateY(-3rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    font-size: 16px;
+  }
+
+  .bubble-left,
+  .bubble-right {
+    font-size: 12px;
+  }
+
+  .character-input {
+    display: none; 
+  }
+}
+
+@media (min-width: 769px) {
+  .bg-video {
+    animation: slowZoom 30s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}

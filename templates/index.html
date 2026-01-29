@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Elaina Bot adalah chatbot AI yang siap membantu kamu ngobrol, belajar, dan eksplor teknologi."
+    />
+    <meta
+      name="keywords"
+      content="Elaina Bot, chatbot AI, AI Indonesia, bot AI"
+    />
+    <meta name="author" content="Elaina Bot" />
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elaina Bot - AI Chat Assistant</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='Image/elaina-title.png') }}"
+      type="Image"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <video class="bg-video desktop" autoplay muted loop playsinline>
+      <source src="/static/Video/Video-Bg.mp4" type="video/mp4" />
+    </video>
+
+    <video class="bg-video mobile" autoplay muted loop playsinline>
+      <source src="/static/Video/BG-MOBILE.mp4" type="video/mp4" />
+    </video>
+
+    <div class="header-box">
+      <div class="header">
+        <span class="color-span typing-header" id="typing-text"></span>
+        <span class="cursor" style="margin-top: -2px;">|</span>
+      </div>
+      <div class="views">&nbsp;Online</div>
+    </div>
+
+    <div class="chat-container" id="chat-box"></div>
+
+    <div class="input-box">
+      <img
+        src="{{ url_for('static', filename='Image/Char-InputChat.png') }}"
+        class="character-input"
+      />
+
+      <input
+        type="text"
+        placeholder="Berbicara sekarang..."
+        class="chat-input"
+        id="user-input"
+      />
+      <button class="send-btn" id="send-btn">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+
+    <div class="footer-box">
+      <p class="info">Chatbot ini dapat membuat kesalahan. | By ABID</p>
+
+      <audio
+        id="bgm"
+        src="{{ url_for('static', filename='audio/backsound-animenya.mp3') }}"
+        loop
+      ></audio>
+
+      <button id="toggle-audio" class="audio-btn">🔊</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+  </body>
+</html>
